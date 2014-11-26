@@ -107,7 +107,6 @@ Model.register(Constants.HANDLE_BLOCK_CLICK, function (payload) {
   Model.setState(assign({}, state, {
     board: newBoard
   }));
-  Model.update();
 });
 
 Model.register(Constants.SHUFFLE_BOARD, function () {
@@ -116,7 +115,6 @@ Model.register(Constants.SHUFFLE_BOARD, function () {
   Model.setState(assign({}, state, {
     board: newBoard
   }));
-  Model.update();
 });
 
 module.exports = Model;

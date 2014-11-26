@@ -3,26 +3,13 @@ var Style = require('../Style');
 var Model = require('../Model');
 var Constants = require('../Constants');
 var Board = require('./Board');
+var getDonburiMixin = require('donburi-model').getReactMixin;
 
 var AppRoot = React.createClass({
+  mixins: [getDonburiMixin(Model)],
+
   _handleShuffleClick: function () {
     Model.request(Constants.SHUFFLE_BOARD);
-  },
-
-  getInitialState: function() {
-    return Model.getState();
-  },
-
-  _onChange: function () {
-    this.setState(Model.getState());
-  },
-
-  componentDidMount: function () {
-    Model.subscribe(this._onChange);
-  },
-
-  componentWillUnmount: function () {
-    Model.unsubscribe(this._onChange);
   },
 
   render: function () {
@@ -42,8 +29,6 @@ var AppRoot = React.createClass({
       </div>
     );
   }
-
-
 });
 
 module.exports = AppRoot;
